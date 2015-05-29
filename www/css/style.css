@@ -56,3 +56,15 @@
     color: #AAAAAA;
     font-size: 12px;
 }
+
+.user-bg {
+    background: url("../img/user/bg.png") center;
+    width: 100%;
+    height: 100px;
+    color: #ffffff;
+}
+
+.user-list a.item {
+    color: #636363;
+    font-size: 14px;
+}
