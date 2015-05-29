@@ -15,7 +15,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'common'])
       }
       if (window.StatusBar) {
         // org.apache.cordova.statusbar required
-        StatusBar.styleDefault();
+        StatusBar.styleLightContent();
       }
     });
   })
@@ -45,39 +45,47 @@ angular.module('starter', ['ionic', 'starter.controllers', 'common'])
         }
       })
 
-      .state('app.search', {
-        url: '/search',
+      .state('app.item', {
+        url: '/item',
         views: {
           'menuContent': {
-            templateUrl: 'templates/search.html'
+            templateUrl: 'templates/item/list.html'
           }
         }
       })
 
-      .state('app.browse', {
-        url: '/browse',
+      .state('app.order', {
+        url: '/order',
         views: {
           'menuContent': {
-            templateUrl: 'templates/browse.html'
-          }
-        }
-      })
-      .state('app.playlists', {
-        url: '/playlists',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/playlists.html',
-            controller: 'PlaylistsCtrl'
+            templateUrl: 'templates/order/list.html'
           }
         }
       })
 
-      .state('app.single', {
-        url: '/playlists/:playlistId',
+      .state('app.user', {
+        url: '/user',
         views: {
           'menuContent': {
-            templateUrl: 'templates/playlist.html',
-            controller: 'PlaylistCtrl'
+            templateUrl: 'templates/user/list.html'
+          }
+        }
+      })
+
+      .state('app.more', {
+        url: '/more',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/more/list.html'
+          }
+        }
+      })
+
+      .state('app.message', {
+        url: '/message',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/message/list.html'
           }
         }
       });
