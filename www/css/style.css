@@ -3,10 +3,6 @@
     color: #000000;
     font-size: 12px;
     margin: 0;
-    /*width: 100%;*/
-    /*white-space: nowrap;*/
-    /*text-overflow: ellipsis;*/
-    /*overflow: hidden;*/
 }
 
 .home-item .price {
@@ -19,4 +15,31 @@
     color: #aaaaaa;
     font-size: 12px;
     margin: 0;
+}
+
+.item-list p {
+    padding: 2px 5px;
+}
+
+.item-list .title {
+    color: #000000;
+    font-size: 14px;
+    margin: 0;
+}
+
+.item-list .price {
+    color: #ff641a;
+    font-size: 18px;
+    margin: 0;
+}
+
+.item-list .origin-price {
+    color: #aaaaaa;
+    font-size: 14px;
+    margin: 0;
+}
+
+.pull-right {
+    float: right;
+    margin-right: 10px;
 }
