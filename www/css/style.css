@@ -43,3 +43,16 @@
     float: right;
     margin-right: 10px;
 }
+
+.order-list p {
+    line-height: 26px;
+}
+
+.order-list button {
+    width: 80px;
+}
+
+.datetime {
+    color: #AAAAAA;
+    font-size: 12px;
+}
