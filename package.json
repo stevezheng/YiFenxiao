@@ -20,10 +20,21 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "com.ionic.keyboard",
-    "cordova-plugin-statusbar"
+    "cordova-plugin-statusbar",
+    {
+      "locator": "/Users/stevezheng/IOS/cordova-plugin-leancloud",
+      "id": "com.sum.cordova.leancloud",
+      "variables": {
+        "LEAN_APP_ID": "y178toa9bim7cgoo3wtraldwfad5wpzeb0710asibpincsud",
+        "LEAN_APP_KEY": "xciqp2z9f2uzfjb22hyqha6vox8n69za56i0wmsvqm6q9x83"
+      }
+    }
   ],
   "cordovaPlatforms": [
-    "ios",
-    "android"
-  ]
+    "android",
+    "ios"
+  ],
+  "mainActivity": "com.yike1908.yifenxiao.MainActivity",
+  "leanAppId": "y178toa9bim7cgoo3wtraldwfad5wpzeb0710asibpincsud",
+  "leanAppKey": "xciqp2z9f2uzfjb22hyqha6vox8n69za56i0wmsvqm6q9x83"
 }
