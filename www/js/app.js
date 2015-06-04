@@ -5,7 +5,7 @@ AV.initialize('y178toa9bim7cgoo3wtraldwfad5wpzeb0710asibpincsud', 'xciqp2z9f2uzf
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'common'])
+angular.module('starter', ['ionic', 'starter.controllers', 'common', 'yike.utils'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -20,7 +20,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'common'])
       }
     });
   })
-
   .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     //这里对android进行一些配置,为了保证ios和安卓平台显示效果一致
     $ionicConfigProvider.tabs.position('bottom');
@@ -101,4 +100,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'common'])
       });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/home');
-  });
+
+  })
+

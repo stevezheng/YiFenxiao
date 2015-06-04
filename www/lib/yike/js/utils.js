@@ -19,6 +19,7 @@
     ////////////////
 
     function go(target, params, options) {
+      console.log(target);
       $state.go(target, params, options);
     }
 
