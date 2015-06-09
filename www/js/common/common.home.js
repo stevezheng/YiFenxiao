@@ -5,11 +5,12 @@
     .module('common.home', ['yike.utils'])
     .controller('CommonHomeCtrl', CommonHomeCtrl);
 
-  CommonHomeCtrl.$inject = ['$scope', '$yikeUtils'];
+  CommonHomeCtrl.$inject = ['$scope', '$yikeUtils', '$ionicSlideBoxDelegate'];
 
   /* @ngInject */
-  function CommonHomeCtrl($scope, $yikeUtils) {
+  function CommonHomeCtrl($scope, $yikeUtils, $ionicSlideBoxDelegate) {
     $scope.data = [];
+    $scope.ads = [];
 
     $scope.init = init;
     $scope.query = query;
@@ -30,6 +31,14 @@
         .select()
         .then(function(data) {
           $scope.data = $yikeUtils.listToRow(data, 2);
+        });
+
+      D('ad')
+        .select()
+        .then(function(data) {
+          $scope.ads = data;
+          $scope.$digest();
+          $ionicSlideBoxDelegate.update();
         });
     }
   }
