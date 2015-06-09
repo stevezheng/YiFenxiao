@@ -65,6 +65,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'common', 'cart', 'it
         }
       })
 
+      .state('app.cart', {
+        url: '/cart',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/cart/list.html',
+            controller: 'CartListCtrl'
+          }
+        }
+      })
+
       .state('app.order', {
         url: '/order',
         views: {

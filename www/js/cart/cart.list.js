@@ -5,28 +5,19 @@
     .module('cart.list', [])
     .controller('CartListCtrl', CartListCtrl);
 
-  CartListCtrl.$inject = ['$scope'];
+  CartListCtrl.$inject = ['$scope', 'Cart'];
 
   /* @ngInject */
-  function CartListCtrl($scope) {
+  function CartListCtrl($scope, Cart) {
     $scope.init = init;
-    $scope.query = query;
+    $scope.data = [];
 
     init();
 
     ////////////////
 
     function init() {
-      query();
-    }
-
-    function query() {
-      D('item')
-        .select()
-        .then(function(data) {
-          $scope.data = data;
-          $scope.$digest();
-        });
+      $scope.data = Cart.sort();
     }
   }
 })();

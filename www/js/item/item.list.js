@@ -34,7 +34,6 @@
     function addToCart(item) {
       var list = Cart.add(item);
       $rootScope.cartCount = list.length;
-      console.log(Cart.all());
     }
   }
 })();
