@@ -68,3 +68,15 @@
     color: #636363;
     font-size: 14px;
 }
+
+.count {
+    background: #ffffff;
+    color: #28a54c;
+    width: 20px;
+    height: 20px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 0 0 -12px;
+}

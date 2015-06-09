@@ -1,6 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $rootScope, $yikeUtils) {
+    $rootScope.cartCount = 0;
   $rootScope.go = $yikeUtils.go;
   // Form data for the login modal
   $scope.loginData = {};

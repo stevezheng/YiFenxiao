@@ -7,7 +7,7 @@
         </div>
 
         <p class="title">{{d.get('name')}}</p>
-        <p class="price">￥{{d.get('price')}}/份 <button class="button button-energized pull-right icon-left ion-android-cart button-small">加入购物车</button></p>
+        <p class="price">￥{{d.get('price')}}/份 <button class="button button-energized pull-right icon-left ion-android-cart button-small" ng-click="addToCart(d)">加入购物车</button></p>
         <p class="origin-price">￥{{d.get('price') * 1.2 | number: 2}}</p>
         </div>
     </ion-content>

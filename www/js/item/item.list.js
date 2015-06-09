@@ -5,12 +5,14 @@
     .module('item.list', [])
     .controller('ItemListCtrl', ItemListCtrl);
 
-  ItemListCtrl.$inject = ['$scope'];
+  ItemListCtrl.$inject = ['$rootScope', '$scope', 'Cart'];
 
   /* @ngInject */
-  function ItemListCtrl($scope) {
+  function ItemListCtrl($rootScope, $scope, Cart) {
+    console.log(Cart);
     $scope.init = init;
     $scope.query = query;
+    $scope.addToCart = addToCart;
 
     init();
 
@@ -27,6 +29,13 @@
           $scope.data = data;
           $scope.$digest();
         });
+    }
+
+    function addToCart(item) {
+      var list = Cart.add(item);
+      $rootScope.cartCount = list.length;
+      console.log(list);
+      console.log(Cart.all());
     }
   }
 })();
