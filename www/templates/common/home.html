@@ -22,14 +22,14 @@
         <div class="home-hot">
             <div class="row">
                 <div class="col">
-                    <a class="item item-avatar" href="#">
+                    <a class="item item-avatar" href="#" ng-click="alert('提示', '团购即将开启，敬请期待')">
                         <img src="img/home/icon1.jpg">
                         <h2>团购</h2>
                         <p style="font-size: 12px;">每周五，限时团</p>
                     </a>
                 </div>
                 <div class="col">
-                    <a class="item item-avatar" href="#">
+                    <a class="item item-avatar" href="#" ng-click="alert('提示', '抢红包即将开启，敬请期待')">
                         <img src="img/home/icon2.jpg">
                         <h2>抢红包</h2>
                         <p style="font-size: 12px;">抢红包，享优惠</p>
@@ -41,63 +41,13 @@
             <div class="row">
                 <h5>热卖商品</h5>
             </div>
-            <div class="row">
-                <!--<a class="col" href="#/app/item-detail/1">-->
-                    <!--<img src="img/home/item3.jpg" alt="" width="100%"/>-->
+            <div class="row" ng-repeat="_data in data">
+                <div class="col" ng-repeat="d in _data" ui-sref="app.item-detail({id: d.id})">
+                    <img ng-src="{{d.get('image')}}" alt="" width="100%" height="100"/>
 
-                    <!--<p class="title">郑重红利啤，清爽口感值得拥有</p>-->
-                    <!--<p class="price">￥9.80/份</p>-->
-                    <!--<p class="origin-price">￥15.00</p>-->
-                <!--</a>-->
-
-                <div class="col">
-                    <img src="img/home/item3.jpg" alt="" width="100%"/>
-
-                    <p class="title">郑重红利啤，清爽口感值得拥有</p>
-                    <p class="price">￥9.80/份</p>
-                    <p class="origin-price">￥15.00</p>
-                </div>
-
-                <div class="col">
-                    <img src="img/home/item4.jpg" alt="" width="100%"/>
-
-                    <p class="title">郑重红利啤，清爽口感值得拥有</p>
-                    <p class="price">￥9.80/份</p>
-                    <p class="origin-price">￥15.00</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <img src="img/home/item1.jpg" alt="" width="100%"/>
-
-                    <p class="title">郑重红利啤，清爽口感值得拥有</p>
-                    <p class="price">￥9.80/份</p>
-                    <p class="origin-price">￥15.00</p>
-                </div>
-
-                <div class="col">
-                    <img src="img/home/item2.jpg" alt="" width="100%"/>
-
-                    <p class="title">郑重红利啤，清爽口感值得拥有</p>
-                    <p class="price">￥9.80/份</p>
-                    <p class="origin-price">￥15.00</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <img src="img/home/item3.jpg" alt="" width="100%"/>
-
-                    <p class="title">郑重红利啤，清爽口感值得拥有</p>
-                    <p class="price">￥9.80/份</p>
-                    <p class="origin-price">￥15.00</p>
-                </div>
-
-                <div class="col">
-                    <img src="img/home/item4.jpg" alt="" width="100%"/>
-
-                    <p class="title">郑重红利啤，清爽口感值得拥有</p>
-                    <p class="price">￥9.80/份</p>
-                    <p class="origin-price">￥15.00</p>
+                    <p class="title">{{d.get('name')}}</p>
+                    <p class="price">￥{{d.get('price')}}/份</p>
+                    <p class="origin-price">￥{{d.get('price') * 1.2}}</p>
                 </div>
             </div>
         </div>

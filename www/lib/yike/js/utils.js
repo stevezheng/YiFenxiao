@@ -14,28 +14,28 @@
       , alert: alert
       , confirm: confirm
       , show: show
+      , listToRow: listToRow
     };
 
     ////////////////
 
     function go(target, params, options) {
-      console.log(target);
       $state.go(target, params, options);
     }
 
-    function alert(title, template) {
+    function alert(title, template, okType) {
       return $ionicPopup.alert({
         title: title,
         template: template,
-        okType: 'button-balanced'
+        okType: okType || 'button-balanced'
       });
     }
 
-    function confirm(title, template) {
+    function confirm(title, template, okType) {
       return $ionicPopup.confirm({
         'title': title
         , 'template': template
-        , 'okType': 'button-balanced'
+        , 'okType': okType ||'button-balanced'
       });
     }
 
@@ -46,6 +46,22 @@
         , scope: scope
         , buttons: buttons
       });
+    }
+
+    function listToRow(originData, row) {
+      var data = []
+        , _data = [];
+      AV._.each(originData, function(d) {
+        if (_data.length < row) {
+          _data.push(d);
+        } else {
+          data.push(_data);
+          _data = [];
+          _data.push(d);
+        }
+      });
+      data.push(_data);
+      return data;
     }
   }
 })();
