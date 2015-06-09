@@ -17,11 +17,11 @@
     ////////////////
 
     function init() {
+      query();
     }
 
     function query() {
       D('item')
-        .where({status: 1})
         .select()
         .then(function(data) {
           $scope.data = data;
