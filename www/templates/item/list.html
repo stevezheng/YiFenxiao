@@ -1,10 +1,9 @@
 <ion-view view-title="全部产品">
     <ion-content>
         <div class="list card item-list" ng-repeat="d in data">
-
-        <div class="item item-image">
+        <a class="item item-image" ui-sref="app.item-detail({id: d.id})">
         <img ng-src="{{d.get('image')}}">
-        </div>
+        </a>
 
         <p class="title">{{d.get('name')}}</p>
         <p class="price">￥{{d.get('price')}}/份 <button class="button button-energized pull-right icon-left ion-android-cart button-small" ng-click="addToCart(d)">加入购物车</button></p>
