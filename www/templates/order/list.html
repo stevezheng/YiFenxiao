@@ -1,63 +1,15 @@
-<ion-view view-title="我的订单">
+<ion-view view-title="我的订单" cache-view="false">
     <ion-content>
-        <div class="list">
+        <p class="text-center padding" ng-show="data.length === 0">订单载入中...</p>
+        <div class="list" ng-repeat="d in data">
 
             <a class="item order-list" href="#">
-                <p>提货码:暂未支付</p>
-                <p>手机号:18699883035 <button class="button button-balanced button-small pull-right">4.5元</button></p>
-                <p class="datetime">2015-05-26 10:34</p>
+                <p>总价:￥{{d.get('price')}}</p>
+                <p>地址:{{d.get('address')}}<button class="button button-balanced button-small pull-right">{{d.get('status') || '订单失败'}}</button></p>
+                <p class="datetime">{{d.createdAt | date: 'yyyy-MM-dd'}}</p>
             </a>
 
         </div>
-
-        <div class="list">
-
-            <a class="item order-list" href="#">
-                <p>提货码:9343223422</p>
-                <p>手机号:18699883035 <button class="button button-balanced button-small pull-right">87元</button></p>
-                <p class="datetime">2015-05-26 10:34</p>
-            </a>
-
-        </div>
-
-        <div class="list">
-
-            <a class="item order-list" href="#">
-                <p>提货码:3423459442</p>
-                <p>手机号:18699883035 <button class="button button-balanced button-small pull-right">37.5元</button></p>
-                <p class="datetime">2015-05-26 10:34</p>
-            </a>
-
-        </div>
-
-        <div class="list">
-
-            <a class="item order-list" href="#">
-                <p>提货码:暂未支付</p>
-                <p>手机号:18699883035 <button class="button button-balanced button-small pull-right">4.5元</button></p>
-                <p class="datetime">2015-05-26 10:34</p>
-            </a>
-
-        </div>
-
-        <div class="list">
-
-            <a class="item order-list" href="#">
-                <p>提货码:9343223422</p>
-                <p>手机号:18699883035 <button class="button button-balanced button-small pull-right">87元</button></p>
-                <p class="datetime">2015-05-26 10:34</p>
-            </a>
-
-        </div>
-
-        <div class="list">
-
-            <a class="item order-list" href="#">
-                <p>提货码:3423459442</p>
-                <p>手机号:18699883035 <button class="button button-balanced button-small pull-right">37.5元</button></p>
-                <p class="datetime">2015-05-26 10:34</p>
-            </a>
-
         </div>
     </ion-content>
 </ion-view>

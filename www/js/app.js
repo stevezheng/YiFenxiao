@@ -89,7 +89,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'common', 'cart', 'or
         url: '/order',
         views: {
           'menuContent': {
-            templateUrl: 'templates/order/list.html'
+            templateUrl: 'templates/order/list.html',
+            controller: 'OrderListCtrl'
           }
         }
       })

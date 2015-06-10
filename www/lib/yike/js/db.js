@@ -84,6 +84,15 @@ function D(model) {
 
     },
 
+    include: function(data) {
+      for (var i = 0; i < data.length; i++) {
+        var obj = data[i];
+        q.include(obj);
+      }
+
+      return this;
+    },
+
     order: function (order) {
       var _order = order.split(' ');
       if (_order.length === 1) {

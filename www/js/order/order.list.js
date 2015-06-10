@@ -10,12 +10,25 @@
   /* @ngInject */
   function OrderListCtrl($scope) {
     $scope.init = init;
+    $scope.data = [];
 
     init();
 
     ////////////////
 
     function init() {
+      query();
+    }
+
+    function query() {
+      D('order')
+        .where({user: AV.User.current()})
+        //.include(['item'])
+        .select()
+        .then(function(data) {
+          $scope.data = data;
+          $scope.$digest();
+        });
     }
   }
 })();
