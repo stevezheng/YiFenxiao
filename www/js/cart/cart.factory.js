@@ -14,6 +14,7 @@
       add: add
       , all: all
       , sort: sort
+      , clear: clear
     };
 
     ////////////////
@@ -24,6 +25,11 @@
     }
 
     function all() {
+      return list;
+    }
+
+    function clear() {
+      list = [];
       return list;
     }
 

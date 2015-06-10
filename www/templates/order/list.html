@@ -1,7 +1,7 @@
 <ion-view view-title="我的订单" cache-view="false">
     <ion-content>
         <p class="text-center padding" ng-show="data.length === 0">订单载入中...</p>
-        <div class="list" ng-repeat="d in data">
+        <div class="list" ng-repeat="d in data" ng-if="d.get('user').id == cUser.id">
 
             <a class="item order-list" href="#">
                 <p>总价:￥{{d.get('price')}}</p>

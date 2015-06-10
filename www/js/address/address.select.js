@@ -12,6 +12,7 @@
     $scope.init = init;
     $scope.qurey = query;
     $scope.select = select;
+    $scope.cUser = AV.User.current();
 
     init();
 
@@ -24,6 +25,7 @@
     function query() {
       Address.own()
         .then(function(data) {
+          console.dir(data);
           $scope.data = data;
         });
     }

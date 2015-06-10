@@ -11,6 +11,8 @@
   function OrderListCtrl($scope) {
     $scope.init = init;
     $scope.data = [];
+    $scope.cUser = AV.User.current();
+
 
     init();
 

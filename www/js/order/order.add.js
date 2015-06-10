@@ -5,10 +5,10 @@
     .module('order.add', [])
     .controller('OrderAddCtrl', OrderAddCtrl);
 
-  OrderAddCtrl.$inject = ['$scope', 'Address', 'Cart', '$yikeUtils', '$state', '$ionicViewService'];
+  OrderAddCtrl.$inject = ['$scope', 'Address', 'Cart', '$yikeUtils', '$state', '$ionicHistory'];
 
   /* @ngInject */
-  function OrderAddCtrl($scope, Address, Cart, $yikeUtils, $state, $ionicViewService) {
+  function OrderAddCtrl($scope, Address, Cart, $yikeUtils, $state, $ionicHistory) {
     $scope.init = init;
     $scope.pay = {
       method: 'offline'
@@ -23,8 +23,8 @@
       Address.own()
         .then(function(addresses) {
           if (!Address.current || Address.current === '') {
-            $scope.currentAddress = addresses[0];
-            Address.current = addresses[0];
+            $scope.currentAddress = '请选择地址';
+            Address.current = '请选择地址';
           } else {
             $scope.currentAddress = Address.current;
           }
@@ -34,6 +34,11 @@
     }
 
     function add() {
+      if ($scope.currentAddress === '请选择地址') {
+        $yikeUtils.alert('提示', '请先选择地址');
+        return false;
+      }
+
       var price = 0;
       var currentAddress = $scope.currentAddress.get('address')
         , payMethod = $scope.pay.method
@@ -66,9 +71,11 @@
           .then(function() {
             $yikeUtils.alert('提示', '添加订单成功');
 
-            $ionicViewService.nextViewOptions({
+            $ionicHistory.nextViewOptions({
               disableBack: true
             });
+
+            Cart.clear();
 
             $state.go('app.order');
           });

@@ -9,7 +9,7 @@
         </div>
         <div class="balance text-center padding" ng-if="data.length == 0">请先选择需要购买的商品</div>
     </ion-content>
-    <div class="bar bar-footer bar-balanced" ng-if="data.length > 0">
+    <div class="bar bar-footer bar-balanced" ng-if="data.length > 0 && cUser">
         <div class="title" ui-sref="app.order-add">立即下单</div>
     </div>
 </ion-view>

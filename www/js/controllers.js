@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $rootScope, $yikeUtils, $state) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $rootScope, $yikeUtils, $state, $ionicHistory) {
     $scope.title = '用户登录';
     $rootScope.cartCount = 0;
   $rootScope.go = $yikeUtils.go;
@@ -21,7 +21,14 @@ angular.module('starter.controllers', [])
 
   // Open the login modal
   $scope.login = function() {
-    $scope.modal.show();
+    try {
+      $scope.modal.show();
+    } catch (ex) {
+        $ionicHistory.nextViewOptions({
+          disableBack: true
+        });
+      $state.go('app.home');
+    }
   };
 
   // Perform the login action when the user submits the login form
@@ -50,7 +57,7 @@ angular.module('starter.controllers', [])
 
     $scope.doReg= function() {
       if ($scope.loginData.username.length !== 11) {
-        $yikeUtils.alert('提示', '请输入正确地手机号码');
+        $yikeUtils.alert('提示', '请输入正确的手机号码');
         return false;
       }
 
@@ -59,16 +66,32 @@ angular.module('starter.controllers', [])
         return false;
       }
 
+      if ($scope.loginData.password !== $scope.loginData.rPassword) {
+        $yikeUtils.alert('提示', '两次密码不一样');
+        return false;
+      }
+
+      if (!$scope.loginData.invite) {
+        $yikeUtils.alert('提示', '请填写邀请人手机号码');
+        return false;
+      }
+
+      if ($scope.loginData.invite.length !== 11) {
+        $yikeUtils.alert('提示', '请填写正确的邀请人手机号码');
+        return false;
+      }
+
       var user = new AV.User();
       user.set('username', $scope.loginData.username);
       user.set('password', $scope.loginData.password);
+      user.set('invite', $scope.loginData.invite);
       user.setMobilePhoneNumber($scope.loginData.username);
 
 
       user.signUp(null, {
         success: function(user) {
+          $yikeUtils.alert('提示', '注册成功,请返回登录');
           $scope.title = '用户登录';
-          $yikeUtils.alert('提示', '注册成功');
         },
         error: function(user, err) {
           if (err.code === 214) {

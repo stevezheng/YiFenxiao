@@ -17,6 +17,11 @@
     ////////////////
 
     function init() {
+      if (!AV.User.current()) {
+        $scope.login();
+      }
+
+      $scope.cUser = AV.User.current();
       $scope.data = Cart.sort();
     }
   }

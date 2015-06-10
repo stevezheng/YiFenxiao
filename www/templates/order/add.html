@@ -3,7 +3,7 @@
         <ul class="list">
             <li class="item item-icon-left" ui-sref="app.address-select">
                 <i class="icon ion-location"></i>
-                {{currentAddress.get('address')}}
+                {{currentAddress.get('address') || currentAddress}}
             </li>
 
             <li class="item item-icon-left" ui-sref="app.address-add">
