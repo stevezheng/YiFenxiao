@@ -1,6 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $rootScope, $yikeUtils) {
+    $scope.title = '用户登录';
     $rootScope.cartCount = 0;
   $rootScope.go = $yikeUtils.go;
   // Form data for the login modal
@@ -25,14 +26,55 @@ angular.module('starter.controllers', [])
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
+    AV.User.logIn($scope.loginData.username, $scope.loginData.password, {
+      success: function (user) {
+        console.log(user);
+
+        $timeout(function () {
+          $scope.closeLogin();
+        }, 1000);
+      },
+      error: function (user, err) {
+        console.log(err);
+        if (err.code === 210) {
+          $yikeUtils.alert('提示', '账号密码不正确');
+        } else if (err.code === 211) {
+          $yikeUtils.alert('提示', '找不到该用户');
+        }
+      }
+    });
 
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
   };
+
+    $scope.doReg= function() {
+      if ($scope.loginData.username.length !== 11) {
+        $yikeUtils.alert('提示', '请输入正确地手机号码');
+        return false;
+      }
+
+      if (!$scope.loginData.password) {
+        $yikeUtils.alert('提示', '请输入用户密码');
+        return false;
+      }
+
+      var user = new AV.User();
+      user.set('username', $scope.loginData.username);
+      user.set('password', $scope.loginData.password);
+      user.setMobilePhoneNumber($scope.loginData.username);
+
+
+      user.signUp(null, {
+        success: function(user) {
+          $scope.title = '用户登录';
+          $yikeUtils.alert('提示', '注册成功');
+        },
+        error: function(user, err) {
+          $yikeUtils.alert('提示', '注册失败');
+        }
+      });
+    };
 })
 
 .controller('PlaylistsCtrl', function($scope) {

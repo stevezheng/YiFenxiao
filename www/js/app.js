@@ -5,7 +5,7 @@ AV.initialize('y178toa9bim7cgoo3wtraldwfad5wpzeb0710asibpincsud', 'xciqp2z9f2uzf
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'common', 'cart', 'order', 'item', 'yike.utils'])
+angular.module('starter', ['ionic', 'starter.controllers', 'common', 'cart', 'order', 'item', 'address', 'yike.utils'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -94,6 +94,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'common', 'cart', 'or
         }
       })
 
+      .state('app.address-select', {
+        url: '/address-select',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/address/select.html'
+          }
+        }
+      })
+
+      .state('app.address-add', {
+        url: '/address-add',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/address/add.html',
+            controller: 'AddressAddCtrl'
+          }
+        }
+      })
+
       .state('app.user', {
         url: '/user',
         views: {
@@ -123,5 +142,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'common', 'cart', 'or
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/home');
 
-  })
+  });
 
