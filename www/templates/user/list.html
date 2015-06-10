@@ -1,73 +1,88 @@
-<ion-view view-title="用户中心">
+<ion-view view-title="用户中心" cache-view="false">
     <ion-content>
         <div class="row user-bg">
             <div class="col col-20 col-offset-10">
                 <i class="icon ion-android-person" style="font-size: 60px"></i>
             </div>
             <div class="col col-60">
-                <p>吴彦祖</p>
+                <p ng-if="!cUser" ng-click="login()">请先登录</p>
+                <p ng-if="cUser">{{cUser.get('name') || cUser.get('username')}}</p>
 
-                <p>会员卡号 98833233</p>
+                <p ng-if="cUser">会员卡号 {{cUser.get('username')}}</p>
             </div>
             <div class="col col-10"></div>
         </div>
-        <div class="list user-list">
+        <div class="list user-list" ng-show="cUser">
 
-            <a class="item item-icon-left item-icon-right" href="#">
+            <a class="item item-icon-left item-icon-right" ui-sref="app.user-detail">
                 <i class="icon ion-email"></i>
                 个人资料
                 <i class="icon ion-ios-arrow-forward"></i>
             </a>
 
-            <a class="item item-icon-left item-icon-right" href="#">
+            <a class="item item-icon-left item-icon-right" ui-sref="app.user-level">
                 <i class="icon ion-chatbubble-working"></i>
                 我的钢丝
                 <i class="icon ion-ios-arrow-forward"></i>
             </a>
 
-            <a class="item item-icon-left item-icon-right" href="#">
+            <a class="item item-icon-left item-icon-right" ui-sref="app.user-fans">
                 <i class="icon ion-mic-a"></i>
                 我的粉丝
                 <i class="icon ion-ios-arrow-forward"></i>
             </a>
 
-            <a class="item item-icon-left item-icon-right" href="#">
+            <a class="item item-icon-left">
                 <i class="icon ion-person-stalker"></i>
-                我的营业额
-                <i class="icon ion-ios-arrow-forward"></i>
+                我的营业额:
+                <span class="pull-right">
+                ￥0.00
+                </span>
+                <!--<i class="icon ion-ios-arrow-forward"></i>-->
             </a>
 
-            <a class="item item-icon-left item-icon-right" href="#">
+            <a class="item item-icon-left">
                 <i class="icon ion-person-stalker"></i>
-                累计收益
-                <i class="icon ion-ios-arrow-forward"></i>
+                累计收益:
+                <span class="pull-right">
+                ￥0.00
+                </span>
+                <!--<i class="icon ion-ios-arrow-forward"></i>-->
             </a>
 
-            <a class="item item-icon-left item-icon-right" href="#">
+            <a class="item item-icon-left">
                 <i class="icon ion-person-stalker"></i>
-                可领收益
-                <i class="icon ion-ios-arrow-forward"></i>
+                可领收益:
+                <span class="pull-right">
+                ￥0.00
+                </span>
+                <!--<i class="icon ion-ios-arrow-forward"></i>-->
             </a>
 
-            <a class="item item-icon-left item-icon-right" href="#">
+            <a class="item item-icon-left item-icon-right" ng-click="withdraw()">
                 <i class="icon ion-person-stalker"></i>
                 提现申请
                 <i class="icon ion-ios-arrow-forward"></i>
             </a>
 
-            <a class="item item-icon-left item-icon-right" href="#">
+            <a class="item item-icon-left item-icon-right" ng-click="share()">
                 <i class="icon ion-person-stalker"></i>
                 分享好友
                 <i class="icon ion-ios-arrow-forward"></i>
             </a>
-            <a class="item item-icon-left item-icon-right" href="#">
+            <a class="item item-icon-left item-icon-right" ui-sref="app.address">
                 <i class="icon ion-person-stalker"></i>
                 我的收货地址
                 <i class="icon ion-ios-arrow-forward"></i>
             </a>
-            <a class="item item-icon-left item-icon-right" href="#">
+            <a class="item item-icon-left item-icon-right" ui-sref="app.favourite">
                 <i class="icon ion-person-stalker"></i>
                 我的收藏
+                <i class="icon ion-ios-arrow-forward"></i>
+            </a>
+            <a class="item item-icon-left item-icon-right" ng-click="logout()">
+                <i class="icon ion-person-stalker"></i>
+                退出
                 <i class="icon ion-ios-arrow-forward"></i>
             </a>
         </div>

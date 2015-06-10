@@ -5,7 +5,7 @@ AV.initialize('y178toa9bim7cgoo3wtraldwfad5wpzeb0710asibpincsud', 'xciqp2z9f2uzf
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'common', 'cart', 'order', 'item', 'address', 'yike.utils'])
+angular.module('starter', ['ionic', 'starter.controllers', 'user', 'common', 'cart', 'order', 'item', 'address', 'yike.utils'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -119,7 +119,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'common', 'cart', 'or
         url: '/user',
         views: {
           'menuContent': {
-            templateUrl: 'templates/user/list.html'
+            templateUrl: 'templates/user/list.html',
+            controller: 'UserListCtrl'
           }
         }
       })

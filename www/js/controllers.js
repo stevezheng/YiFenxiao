@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $rootScope, $yikeUtils) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $rootScope, $yikeUtils, $state) {
     $scope.title = '用户登录';
     $rootScope.cartCount = 0;
   $rootScope.go = $yikeUtils.go;
@@ -28,8 +28,8 @@ angular.module('starter.controllers', [])
   $scope.doLogin = function() {
     AV.User.logIn($scope.loginData.username, $scope.loginData.password, {
       success: function (user) {
-        console.log(user);
-
+        $yikeUtils.alert('提示', '登录成功');
+        $state.reload();
         $timeout(function () {
           $scope.closeLogin();
         }, 1000);
@@ -71,22 +71,10 @@ angular.module('starter.controllers', [])
           $yikeUtils.alert('提示', '注册成功');
         },
         error: function(user, err) {
-          $yikeUtils.alert('提示', '注册失败');
+          if (err.code === 214) {
+            $yikeUtils.alert('提示', '注册失败,该用户已存在');
+          }
         }
       });
     };
-})
-
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
 });
