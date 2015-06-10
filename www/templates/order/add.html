@@ -1,9 +1,9 @@
-<ion-view view-title="新增订单">
+<ion-view view-title="新增订单" cache-view="false">
     <ion-content>
         <ul class="list">
             <li class="item item-icon-left" ui-sref="app.address-select">
                 <i class="icon ion-location"></i>
-                厦门市湖里区190322
+                {{currentAddress.get('address')}}
             </li>
 
             <li class="item item-icon-left" ui-sref="app.address-add">
@@ -17,14 +17,14 @@
                 支付方式
             </div>
             <label class="item item-radio">
-                <input type="radio" name="group">
+                <input type="radio" name="group" ng-model="pay.method" value="online">
                 <div class="item-content">
                     线上支付
                 </div>
                 <i class="radio-icon ion-checkmark balanced"></i>
             </label>
             <label class="item item-radio">
-                <input type="radio" name="group" checked>
+                <input type="radio" name="group" ng-model="pay.method" value="offline">
                 <div class="item-content">
                     货到付款
                 </div>
@@ -33,6 +33,6 @@
         </ul>
     </ion-content>
     <div class="bar bar-footer bar-balanced">
-        <div class="title">提交</div>
+        <div class="title" ng-click="add()">提交</div>
     </div>
 </ion-view>

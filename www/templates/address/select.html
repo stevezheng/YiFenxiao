@@ -1,12 +1,7 @@
 <ion-view view-title="选择地址">
     <ion-content>
         <ul class="list">
-            <li class="item">厦门xx路xx街</li>
-            <li class="item">厦门xx路xx街</li>
-            <li class="item">厦门xx路xx街</li>
-            <li class="item">厦门xx路xx街</li>
-            <li class="item">厦门xx路xx街</li>
-            <li class="item">厦门xx路xx街</li>
+            <li class="item" ng-repeat="d in data" ng-click="select(d)">{{d.get('address')}}</li>
         </ul>
     </ion-content>
 </ion-view>

@@ -9,9 +9,13 @@
 
   /* @ngInject */
   function Address() {
+    var current;
+
     return {
       query: query
       , add: add
+      , own: own
+      , current: current
     };
 
     ////////////////
@@ -22,6 +26,12 @@
     function add(data) {
       return D('address')
         .add({address: data, user: AV.User.current(), status: 1});
+    }
+
+    function own() {
+      return D('address')
+        .where({user: AV.User.current()})
+        .select();
     }
   }
 })();

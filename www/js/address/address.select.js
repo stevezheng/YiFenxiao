@@ -5,17 +5,33 @@
     .module('address.select', [])
     .controller('AddressSelectCtrl', AddressSelectCtrl);
 
-  AddressSelectCtrl.$inject = ['$scope'];
+  AddressSelectCtrl.$inject = ['$scope', 'Address', '$yikeUtils', '$ionicHistory'];
 
   /* @ngInject */
-  function AddressSelectCtrl($scope) {
+  function AddressSelectCtrl($scope, Address, $yikeUtils, $ionicHistory) {
     $scope.init = init;
+    $scope.qurey = query;
+    $scope.select = select;
 
     init();
 
     ////////////////
 
     function init() {
+      query();
+    }
+
+    function query() {
+      Address.own()
+        .then(function(data) {
+          $scope.data = data;
+        });
+    }
+
+    function select(d) {
+      Address.current = d;
+      //$yikeUtils.alert('提示', '选择地址成功');
+      $ionicHistory.goBack();
     }
   }
 })();

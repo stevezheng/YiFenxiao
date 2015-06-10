@@ -98,7 +98,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'common', 'cart', 'or
         url: '/address-select',
         views: {
           'menuContent': {
-            templateUrl: 'templates/address/select.html'
+            templateUrl: 'templates/address/select.html',
+            controller: 'AddressSelectCtrl'
           }
         }
       })
