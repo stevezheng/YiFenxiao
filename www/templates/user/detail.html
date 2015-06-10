@@ -1,0 +1,23 @@
+<ion-view view-title="个人资料" cache-view="false">
+    <ion-content>
+        <div class="list user-list" ng-show="cUser">
+            <a class="item item-icon-left">
+                <i class="icon ion-person-stalker"></i>
+                手机号/用户名:
+                <span class="pull-right">
+                    {{cUser.get('username')}}
+                </span>
+                <!--<i class="icon ion-ios-arrow-forward"></i>-->
+            </a>
+
+            <a class="item item-icon-left">
+                <i class="icon ion-person-stalker"></i>
+                邀请人手机号:
+                <span class="pull-right">
+                    {{cUser.get('invite')}}
+                </span>
+                <!--<i class="icon ion-ios-arrow-forward"></i>-->
+            </a>
+        </div>
+    </ion-content>
+</ion-view>

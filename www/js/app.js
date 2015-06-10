@@ -125,6 +125,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'user', 'common', 'ca
         }
       })
 
+      .state('app.user-detail', {
+        url: '/user-detail',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/user/detail.html',
+            controller: 'UserDetailCtrl'
+          }
+        }
+      })
+
+      .state('app.user-level', {
+        url: '/user-level',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/user/level.html',
+            controller: 'UserLevelCtrl'
+          }
+        }
+      })
+
       .state('app.more', {
         url: '/more',
         views: {
