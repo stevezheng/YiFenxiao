@@ -24,7 +24,7 @@
 
     function query() {
       D('order')
-        .where({user: AV.User.current()})
+        //.where({user: AV.User.current()})
         //.include(['item'])
         .select()
         .then(function(data) {

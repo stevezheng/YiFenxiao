@@ -9,8 +9,8 @@
             <p class="title">{{data.get('name')}}</p>
             <p class="price">￥{{data.get('price')}}/份 <button ng-click="addToCart(data)" class="button button-energized pull-right icon-left ion-android-cart button-small">加入购物车</button></p>
             <p class="origin-price">￥{{data.get('price') * 1.2 | number: 2}}</p>
-            <div class="desc padding">
-                {{data.get('desc')}}
+            <h5 class="padding">产品简介</h5>
+            <div class="desc padding-left padding-right" ng-bind-html="data.get('desc') || '本产品无产品简介'">
             </div>
         </div>
     </ion-content>

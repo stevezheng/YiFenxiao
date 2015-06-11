@@ -9,7 +9,6 @@
 
   /* @ngInject */
   function ItemListCtrl($rootScope, $scope, Cart) {
-    console.log(Cart);
     $scope.init = init;
     $scope.query = query;
     $scope.addToCart = addToCart;
