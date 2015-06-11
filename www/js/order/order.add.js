@@ -62,7 +62,7 @@
             , price: item.get('price')
             , totalPrice: Number(item.count * item.get('price')).toFixed(2)
           };
-          price += Number(_item.price);
+          price += _item.totalPrice;
           _items.push(_item);
         }
 
