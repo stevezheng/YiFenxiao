@@ -1,11 +1,11 @@
 <ion-view view-title="购物车" cache-view="false">
     <ion-content>
         <div class="list" ng-if="data.length > 0">
-            <a class="item item-avatar" href="#" ng-repeat="d in data">
+            <div class="item item-avatar" ng-repeat="d in data">
                 <img ng-src="{{d.get('image')}}">
                 <h2>{{d.get('name')}}</h2>
-                <p>￥{{d.get('price')}} <span class="pull-right">{{d.count}}份</span></p>
-            </a>
+                <p>￥{{d.get('price')}} <span class="pull-right"> <i class="ion ion-minus-circled" ng-click="minus(d)"></i> {{d.count}} <i class="ion ion-plus-circled" ng-click="plus(d)"></i> &nbsp;份</span> </p>
+            </div>
         </div>
         <div class="balance text-center padding" ng-if="data.length == 0">请先选择需要购买的商品</div>
     </ion-content>

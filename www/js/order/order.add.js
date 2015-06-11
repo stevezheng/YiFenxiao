@@ -5,10 +5,10 @@
     .module('order.add', [])
     .controller('OrderAddCtrl', OrderAddCtrl);
 
-  OrderAddCtrl.$inject = ['$scope', 'Address', 'Cart', '$yikeUtils', '$state', '$ionicHistory'];
+  OrderAddCtrl.$inject = ['$rootScope', '$scope', 'Address', 'Cart', '$yikeUtils', '$state', '$ionicHistory'];
 
   /* @ngInject */
-  function OrderAddCtrl($scope, Address, Cart, $yikeUtils, $state, $ionicHistory) {
+  function OrderAddCtrl($rootScope, $scope, Address, Cart, $yikeUtils, $state, $ionicHistory) {
     $scope.init = init;
     $scope.pay = {
       method: 'offline'
@@ -76,6 +76,7 @@
             });
 
             Cart.clear();
+            $rootScope.cartCount = 0;
 
             $state.go('app.order');
           });

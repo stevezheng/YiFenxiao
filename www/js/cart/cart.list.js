@@ -11,6 +11,8 @@
   function CartListCtrl($scope, Cart) {
     $scope.init = init;
     $scope.data = [];
+    $scope.minus = minus;
+    $scope.plus = plus;
 
     init();
 
@@ -23,6 +25,16 @@
 
       $scope.cUser = AV.User.current();
       $scope.data = Cart.sort();
+    }
+
+    function minus(d) {
+      if (d.count > 0) {
+        d.count--;
+      }
+    }
+
+    function plus(d) {
+      d.count++;
     }
   }
 })();
