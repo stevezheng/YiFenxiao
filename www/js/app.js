@@ -1,11 +1,25 @@
 AV.initialize('y178toa9bim7cgoo3wtraldwfad5wpzeb0710asibpincsud', 'xciqp2z9f2uzfjb22hyqha6vox8n69za56i0wmsvqm6q9x83');
+
+function loaded($state) {
+  try {
+    var HomeLogo = window.localStorage.getItem('installed');
+    console.log(HomeLogo);
+    if (HomeLogo == null) {
+      $state.go('intro');
+    }
+  } catch (e) {
+    $state.go('app.home');
+  }
+}
+
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'user', 'common', 'cart', 'order', 'item', 'address', 'yike.utils', 'more'])
+angular.module('starter',
+  ['ionic', 'starter.controllers', 'user', 'common', 'cart', 'order', 'item', 'address', 'yike.utils', 'more', 'intro'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -153,6 +167,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'user', 'common', 'ca
             controller: 'MoreListCtrl'
           }
         }
+      })
+
+      .state('intro', {
+        url: '/intro',
+            templateUrl: 'templates/intro/list.html',
+            controller: 'IntroListCtrl'
       })
 
       .state('app.message', {

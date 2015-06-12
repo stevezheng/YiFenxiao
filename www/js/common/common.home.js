@@ -1,14 +1,25 @@
 (function () {
   'use strict';
 
+  function loaded($state) {
+    try {
+      var HomeLogo = window.localStorage.getItem('installed');
+      if (HomeLogo == null) {
+        $state.go('intro');
+      }
+    } catch (e) {
+      $state.go('app.home');
+    }
+  }
+
   angular
     .module('common.home', ['yike.utils'])
     .controller('CommonHomeCtrl', CommonHomeCtrl);
 
-  CommonHomeCtrl.$inject = ['$scope', '$yikeUtils', '$ionicSlideBoxDelegate'];
+  CommonHomeCtrl.$inject = ['$scope', '$yikeUtils', '$ionicSlideBoxDelegate', '$state'];
 
   /* @ngInject */
-  function CommonHomeCtrl($scope, $yikeUtils, $ionicSlideBoxDelegate) {
+  function CommonHomeCtrl($scope, $yikeUtils, $ionicSlideBoxDelegate, $state) {
     $scope.data = [];
     $scope.ads = [];
 
@@ -23,6 +34,7 @@
     ////////////////
 
     function init() {
+      loaded($state);
       query();
     }
 
